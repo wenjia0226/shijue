@@ -1,0 +1,15 @@
+<!--way/way.wxml-->
+<view >
+  <view class="addBtn" bindtap="gotoAdd">
+    <view >新增方式 </view>
+  </view>
+  <view wx:for="{{eyeSightList}}" class='itemWrap'>
+   <view class="combination"data-id="{{item.id}}" bindtap="gotoDetail">{{item.name}}</view>
+   <view class="imgBox"> 
+    <image src="/image/push.png" data-id="{{item.id}}" bindtap="pushWay"></image>
+   </view>
+   <view class="imgBox" bindtap="delete" data-id="{{item.id}}">
+    <image src="/image/delete.png" ></image>
+   </view>
+  </view>
+</view>

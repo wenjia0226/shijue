@@ -1,0 +1,31 @@
+/* page/assembly/pages/navbar/navbar.wxss */
+.nav-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999999;
+  /* background: #fff; */
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+.titleWrap {
+ left: 30rpx;
+ position: absolute;
+}
+.titleWrap image {
+  width: 36rpx;
+  height: 36rpx;
+  display: block;
+}
+.biaoti {
+  font-size: 30rpx;
+  color: #fff;
+}

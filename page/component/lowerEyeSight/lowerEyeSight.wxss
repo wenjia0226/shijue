@@ -1,0 +1,38 @@
+/* page/component//eyeSight/eyeSight.wxss */
+.conWrap {
+  margin: 10rpx;
+}
+.title {
+  margin: 10rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: red;
+}
+.secondTitle {
+  font-size: 26rpx;
+  margin: 10rpx;
+}
+.chooseItem {
+  font-size: 24rpx;
+  margin: 10rpx 0
+}
+.itemAll {
+  font-size: 24rpx;
+  margin: 10rpx 0;
+  display: flex;
+}
+.secondTitle {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.select-wrap {
+  width: 150rpx;
+  font-size: 26rpx;
+}
+.selected {
+  margin-top: 50%;
+}
+.titleTime {
+  line-height: 50rpx;
+  margin: 0 15rpx;
+}

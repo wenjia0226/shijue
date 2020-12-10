@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "弱视训练",
+  "usingComponents": {
+    "Select": "../select/select"
+  }
+}

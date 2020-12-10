@@ -1,0 +1,6 @@
+/* detail/detail.wxss */
+.item {
+  padding: 10rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+}

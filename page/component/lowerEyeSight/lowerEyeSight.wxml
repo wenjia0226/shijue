@@ -1,0 +1,74 @@
+<!--page/component//eyeSight/eyeSight.wxml-->
+<view class= "mianWrap">
+  <view wx:for="{{eyeSightList}}" class="conWrap" wx:key="index">
+    <view class="title">{{index + 1}} {{item.name}}</view>
+    <view class="itemTitle" wx:for="{{item.tool}}" wx:for-item="tool" wx:key="index">
+    <view class="secondTitle"  wx:if="{{tool.name == '智能翻转镜' ||tool.name == '镜片阅读' || tool.name == '弱视综合治疗仪'}}" data-name="{{tool.name}}"data-pname="{{tool.pName}}" > 
+    {{tool.name}}
+    </view>
+    <view wx:else>
+      <view class="itemAll">
+      <checkbox-group class='radio-group'>
+          <checkbox  class='radio'style='margin-left: 5rpx;margin-right: 20rpx' 
+          data-name="{{tool.name}}"data-pname="{{tool.pName}}" data-checked="{{tool.checked}}" bindtap="selectId">
+          <text class="secondTitle" style='margin-left: 0px;'> {{tool.name}}</text>
+          </checkbox>
+      </checkbox-group>
+    </view>
+    </view>
+    
+     <view class="itemAll"  wx:if="{{tool.name == '双面镜' && tool.pName == '单眼调节训练'}}">
+      <view class="titleTime">光度</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{sightList2}}" key="city_id" text="city_name" bind:change="changeSight2"></Select>
+      </view>
+      <view class="titleTime"> 时间</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{timeList2}}" key="city_id" text="city_name" bind:change="change2"></Select>
+      </view>
+      <view class="titleTime"> 视标大小</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{luminosityList2}}" key="city_id" text="city_name" bind:change="changeLuminosity2"></Select>
+      </view>
+    </view>
+
+    <view class="itemAll"  wx:if="{{tool.name == '智能翻转镜' && tool.pName == '双眼调节训练'}}">
+      <view class="titleTime">光度</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{sightList}}" key="city_id" text="city_name" bind:change="changeSight"></Select>
+      </view>
+      <view class="titleTime"> 时间</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{timeList}}" key="city_id" text="city_name" bind:change="change"></Select>
+      </view>
+     
+      <view class="titleTime">视标大小</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{luminosityList}}" key="city_id" text="city_name" bind:change="changeLuminosity"></Select>
+      </view>
+    </view>
+   
+     <view class="itemAll"  wx:if="{{tool.name == '镜片阅读'}}">
+      <view class="select-wrap">
+          <Select id="select" options="{{doubleSightList}}" key="city_id" text="city_name" bind:change="changeEyeRead"></Select>
+        </view>
+      </view>
+    <view class="itemAll"  wx:if="{{tool.name == '弱视综合治疗仪'}}">
+      <checkbox-group class='radio-group' bindchange="eyePoverInput">
+          <checkbox class='radio'style='margin-left: 5rpx;margin-right: 20rpx' wx:for-items="{{eyePowerList}}" wx:key="index" value="{{item.name}}">
+          <text class="loginLab" style='margin-left: 0px;'>{{item.name}}</text>
+          </checkbox>
+      </checkbox-group>
+    </view>
+    <view class="itemAll"  wx:if="{{tool.name == '圆盘'}}">
+      <checkbox-group class='radio-group' bindchange="boxInput">
+          <checkbox  class='radio'style='margin-left: 5rpx;margin-right: 20rpx' wx:for-items="{{boxList}}" wx:key="index" value="{{item.name}}">
+          <text class="loginLab" style='margin-left: 0px;'>{{item.name}}</text>
+          </checkbox>
+      </checkbox-group>
+    </view>
+    </view>
+   
+  </view>
+   <button type="primary" style="margin: 30rpx auto 50rpx" bindtap="submit">提交</button>
+</view>

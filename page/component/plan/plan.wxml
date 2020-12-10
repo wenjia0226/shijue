@@ -1,0 +1,22 @@
+<!--page/component//plan/plan.wxml-->
+<view class="mainWrap">
+  <!-- <view class="topWrap">
+     <view class="avaterBox" >
+          <image src="https://www.guangliangkongjian.com/images/b1.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
+           <image src="https://www.guangliangkongjian.com/images/g1.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
+      <view class="changeStu">
+       <Select bindmyevent="myevent"  bindnewchildrenlist ="newchildrenlist" prop-array='{{selectArray}}'></Select>
+      </view>
+    </view>
+    <view class="stuName">{{studentName}}</view>
+  </view> -->
+  <view class="eyeSight" bindtap="gotoSight" >
+    <image src="/image/sight.png" mode="aspectFit"></image>
+  </view>
+   <view class="eyeSight" bindtap="gotoLowerSight">
+    <image src="/image/downSight.png" mode="aspectFit"></image>
+  </view>
+</view>
+ <!-- <view class="inputPh" wx-if="{{!show}}" >
+    <input bindinput="inputPhone" placeholder="请先输入家长手机号"></input>
+</view> -->

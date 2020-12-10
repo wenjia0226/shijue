@@ -1,0 +1,28 @@
+/* way/way.wxss */
+.addBtn {
+  text-align: right;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: red;
+  padding: 20rpx;
+}
+.combination {
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  flex: 1;
+}
+.itemWrap {
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx dotted grey;
+}
+.imgBox {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 30rpx;
+}
+.imgBox > image{
+  width: 100%;
+  height: 100%;
+}

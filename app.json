@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "page/tabBar/my/my",
+    "page/tabBar/index/index"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "page/tabBar/index/index",
+        "text": "训练",
+        "iconPath": "image/practice.png",
+        "selectedIconPath": "image/practiceactive.png"
+      },
+      {
+        "pagePath": "page/tabBar/my/my",
+        "text": " 我的",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/myactive.png"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "page/component/",
+      "pages": [
+        "childrenManage/childrenManage",
+        "mychildren/mychildren",
+        "studentCode/studentCode",
+        "clertMain/clertMain",
+        "clertLogin/clertLogin",
+        "reportList/reportList",
+        "reportDetail/reportDetail",
+        "plan/plan",
+        "way/way",
+        "eyeSight/eyeSight",
+        "lowerEyeSight/lowerEyeSight",
+        "detail/detail"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

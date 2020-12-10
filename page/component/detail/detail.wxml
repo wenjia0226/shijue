@@ -1,0 +1,6 @@
+<!--detail/detail.wxml-->
+<view wx:for="{{eyeSightList}}">
+  <view class="item">
+  {{item}}
+  </view>
+</view>
