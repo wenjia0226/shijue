@@ -91,9 +91,9 @@ Page({
           wx.navigateBack({
             url: 'page/component/childrenManage/childrenManage'
           })
-        } else if (that.data.prevRoute == 'page/component/plan/plan') {
+        } else if (that.data.prevRoute == 'page/component/way/way') {
           wx.navigateBack({
-            url: 'page/component/plan/plan'
+            url: 'page/component/way/way'
           })
         }
       } 

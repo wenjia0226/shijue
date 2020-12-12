@@ -3,9 +3,7 @@ const app = getApp();
 Page({
   data: {
     eyeSightList: [],
-    // coverList: [
-    //   { title: "睫状肌-智能翻转镜-光度", name: '光度', checked: false },
-    // ],
+    name: '',
     timeList: [{
       city_id: '双眼调节训练-智能翻转镜-1分钟/',
       city_name: '1分钟'
@@ -112,9 +110,6 @@ Page({
         city_name: '±2.50D'
       }],
     selected: {},
-    // doubleCoverList: [
-    //   { title: "睫状肌-双面镜镜卡组合-光度", name: '光度', checked: false }
-    // ],
     timeList2: [{
       city_id: '单眼调节训练-双面镜-1分钟/',
       city_name: '1分钟'
@@ -289,7 +284,6 @@ Page({
     let name = e.currentTarget.dataset.name;
     let eyeSightList = this.data.eyeSightList;
     for (let i = 0; i < eyeSightList.length; i++) {
-      console.log(eyeSightList[i])
       let tool = eyeSightList[i].tool;
       for (let j = 0; j < tool.length; j++) {
         if (tool[j].pName == pname && tool[j].name == name) {
@@ -300,7 +294,6 @@ Page({
     this.setData({
       eyeSightList: eyeSightList
     })
-    console.log(this.data.eyeSightList)
   },
   getThird(e) {
     console.log(e)
@@ -371,6 +364,11 @@ Page({
       boxList: items
     })
   },
+  inputName(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
   submit() {
     let that = this;
     let list = this.data.eyeSightList;
@@ -403,9 +401,10 @@ Page({
     sum += this.data.luminosity;
     sum += this.data.luminosity2;
     let url = app.globalData.URL + 'pushTrainCombination', data = {
-      // direction: options.flag
+      name: this.data.name,
       combination: sum,
-      pName: '弱视训练'
+      pName: wx.getStorageSync('pName'),
+      openId: wx.getStorageSync('openId')
     };
     app.wxRequest(url, data, (res) => {
       // console.log(res)

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "方式选择",
+  "navigationBarTitleText": "孩子管理",
   "usingComponents": {
     "selectChild": "../selectChild/selectChild"
   }

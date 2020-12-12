@@ -68,7 +68,11 @@
       </checkbox-group>
     </view>
     </view>
-   
+  </view>
+   <view class="itemAll">
+    <view class="inputPh" >
+      <input bindinput="inputName" placeholder="请输入次组合名称"></input>
+    </view>
   </view>
    <button type="primary" style="margin: 30rpx auto 50rpx" bindtap="submit">提交</button>
 </view>

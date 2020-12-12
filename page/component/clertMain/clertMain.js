@@ -97,5 +97,10 @@ Page({
     wx.navigateTo({
       url: '../plan/plan',
     })
+  },
+  gotoChildren() {
+    wx.navigateTo({
+      url: '../childrenShow/childrenShow',
+    })
   }
 })

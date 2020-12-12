@@ -1,5 +1,18 @@
 <!--way/way.wxml-->
 <view >
+    <view class="inputPh" wx-if="{{!show}}" >
+        <input bindinput="inputPhone" placeholder="请先输入家长手机号"></input>
+    </view>
+    <view class="topWrap" wx-if="{{show}}">
+     <view class="avaterBox" >
+          <image src="https://www.guangliangkongjian.com/images/b1.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
+           <image src="https://www.guangliangkongjian.com/images/g1.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
+      </view>
+      <view class="changeStu">
+       <selectChild  bindmyevent="myevent"  bindnewchildrenlist ="newchildrenlist" prop-array='{{selectArray}}'></selectChild>
+      </view>
+      <view class="stuName" wx-if="{{show}}">{{studentName}}</view>
+    </view>
   <view class="addBtn" bindtap="gotoAdd">
     <view >新增方式 </view>
   </view>

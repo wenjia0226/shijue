@@ -7,7 +7,8 @@ Page({
     childrenList: [],
     studentId: '',
     selectArray: [],
-    show: false
+    show: false,
+    studentName: ''
   },
   onShow: function () {
     this.setData({
@@ -30,6 +31,9 @@ Page({
       studentId: e.detail.studentId
     })
     wx.setStorageSync('studentId', e.detail.studentId);
+    wx.setStorageSync('gender', e.detail.gender);
+    wx.setStorageSync('studentName', e.detail.params);
+    this.getChildCombination();
   },
   newchildrenlist(e) {
     let curStudent = e.detail.newChildrenList;
@@ -78,6 +82,7 @@ Page({
         wx.setStorageSync('gender', res.data.data[0].gender);
         wx.setStorageSync('studentName', res.data.data[0].name);
         }
+        that.getChildCombination();
       } else if (res.data.status == 10220) {
         that.setData({
           childrenList: [],
@@ -93,8 +98,48 @@ Page({
       }
     })
   },
-  getPractice() {
-    
+  getChildCombination() {
+    let that = this;
+    let url = app.globalData.URL + "childrenCombinationList", data = { childrenId:this.data.studentId, openId: wx.getStorageSync('openId')};
+    //如果已经授权过
+    wx.showLoading({
+      title: '加载中...'
+    })
+    app.wxRequest(url, data, (res) => {
+      if (res.data.data) {
+        that.setData({
+          combinationList: res.data.data
+        })
+      }
+      })
+  },
+  gotoDetail(e) {
+    let id = e.currentTarget.dataset.id;
+    let that = this;
+    wx.navigateTo({
+      url: '/page/component/detail/detail?id=' + id
+    })
+  },
+  finish(e) {
+    let id = e.currentTarget.dataset.id;
+    let isOpen = e.currentTarget.dataset.isopen;
+    if(isOpen == 1) {
+      let that = this;
+      let url = app.globalData.URL + "combinationSuccess", data = { id: id};
+      //如果已经授权过
+      wx.showLoading({
+        title: '加载中...'
+      })
+      app.wxRequest(url, data, (res) => {
+        if (res.data.status == 200) {
+          that.getChildCombination()
+        }
+      })
+    }else {
+      wx.showToast({
+        title: '请先解锁该训练',
+      })
+    }
   },
   addChild() {
     let that = this;

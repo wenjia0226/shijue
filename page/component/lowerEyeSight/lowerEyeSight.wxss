@@ -36,3 +36,9 @@
   line-height: 50rpx;
   margin: 0 15rpx;
 }
+.inputPh {
+  padding: 10rpx 20rpx;
+  border: 2rpx solid grey;
+  width: 100%;
+  margin: 10rpx ;
+}

@@ -20,7 +20,6 @@
     <view class="detailWrapper">
       <view class="toDetailBox" data-id="{{item.id}}"   bindtap="gotoChildrenDetail" >
         <text>详情</text>
-
         <image src="/image/righticon3.png"></image>
       </view>
     </view>

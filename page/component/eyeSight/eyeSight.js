@@ -273,7 +273,6 @@ Page({
     let that = this;
     let url = app.globalData.URL + 'getProgram', data = {
        direction: options.flag
-      // direction: '视觉训练'
     };
     app.wxRequest(url, data, (res) => {
       if (res.data.status == 200) {
@@ -288,7 +287,6 @@ Page({
     let name = e.currentTarget.dataset.name;
     let eyeSightList = this.data.eyeSightList;
     for(let i = 0; i < eyeSightList.length;i++) {
-      console.log(eyeSightList[i])
       let tool = eyeSightList[i].tool;
         for (let j = 0; j <tool.length; j++) {
           if (tool[j].pName == pname &&tool[j].name == name) {
@@ -299,7 +297,6 @@ Page({
     this.setData({
       eyeSightList: eyeSightList
     })
-    console.log(this.data.eyeSightList)
   },
   getThird(e) {
     console.log(e)
@@ -404,7 +401,7 @@ Page({
     let url = app.globalData.URL + 'pushTrainCombination', data = {
       name: this.data.name,
       combination: sum,
-      pName: this.data.direction,
+      pName: wx.getStorageSync('pName'),
       openId: wx.getStorageSync('openId')
     };
     app.wxRequest(url, data, (res) => {
@@ -417,9 +414,8 @@ Page({
     })
   },
   inputName(e) {
-    console.log(e)
     this.setData({
-      name: e.detail
+      name: e.detail.value
     })
   }
 })

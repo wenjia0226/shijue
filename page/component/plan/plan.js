@@ -19,15 +19,13 @@ Page({
     })
   },
   inputPhone(e) {
-    //let phone = e.detail.value;
-    let phone = '19931372308';
+    let phone = e.detail.value;
     if(phone.length == 11) {
       let that = this;
       let url = app.globalData.URL + 'getChildrenByPhone', data = {
         phone: phone
       };
       app.wxRequest(url, data, (res) => {
-        console.log(res.data)
         if (res.data.data) {
           res.data.data.push({
             name: '添加孩子'

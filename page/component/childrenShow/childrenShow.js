@@ -1,38 +1,21 @@
 // way/way.js
 const app = getApp();
 Page({
- data: {
-   eyeSightList: [],
-   pName: '',
-   show: false,
-   childrenId: '',
-   selectArray: [],
-   childrenList: [],
-   gender: 2,
-   studentName: ''
- },
- onLoad(options) {
-    let that = this;
-    this.setData({
-      pName: options.flag
-    })
-    wx.setStorageSync('pName', options.flag);
-    this.getList();
-  },
-  onShow() {
-    this.setData({
-      pName: wx.getStorageSync('pName'),
-      childrenId: wx.getStorageSync('studentId')
-    })
-    if(this.data.pName) {
-      this.getList();
-    }
+  data: {
+    eyeSightList: [],
+    pName: '',
+    show: false,
+    childrenId: '',
+    selectArray: [],
+    childrenList: [],
+    gender: 2,
+    studentName: '',
+    studentId: ''
   },
   getList() {
     let that = this;
-    let url = app.globalData.URL + 'combinationList', data = {
-      pName: this.data.pName,
-      openId: wx.getStorageSync('openId')
+    let url = app.globalData.URL + 'childrenCombinationList', data = {
+      childrenId: this.data.childrenId
     };
     app.wxRequest(url, data, (res) => {
       if (res.data.status == 200) {
@@ -42,13 +25,11 @@ Page({
       }
     })
   },
-  delete(e){
+  delete(e) {
     let delId = e.currentTarget.dataset.id;
     let that = this;
-    let url = app.globalData.URL + 'deleteCombination', data = {
-      id: delId,
-      pName: this.data.pName,
-      openId: wx.getStorageSync('openId')
+    let url = app.globalData.URL + 'deleteChildrenCombination', data = {
+      id: delId
     };
     wx.showModal({
       title: '删除组合',
@@ -58,44 +39,42 @@ Page({
           app.wxRequest(url, data, (res) => {
             // console.log(res)
             if (res.data.status == 200) {
-               wx.showToast({
-                 title: '删除成功'
-               })
-               that.setData({
-                 eyeSightList: res.data.data
-               })
+              wx.showToast({
+                title: '删除成功'
+              })
+             that.getList();
             }
           })
         } else if (res.cancel) {
-          // console.log('用户点击取消')
+
         }
       }
     })
   },
-  gotoDetail(e){
+  gotoDetail(e) {
     let id = e.target.dataset.id;
     wx.navigateTo({
       url: '../detail/detail?id=' + id
     })
   },
   pushWay(e) {
-    if(this.data.childrenId && this.data.show) {
+    if (this.data.childrenId && this.data.show) {
       let id = e.target.dataset.id;
       let that = this;
       let url = app.globalData.URL + 'combinationToChildren',
-      data = {
-        childrenId: wx.getStorageSync('studentId'),
-        combinationId: id
-      }
+        data = {
+          childrenId: wx.getStorageSync('studentId'),
+          combinationId: id
+        }
       app.wxRequest(url, data, (res) => {
         if (res.data.status == 200) {
           wx.showToast({
-            title: '推送至' + wx.getStorageSync('studentName')+ '成功'
+            title: '推送至' + wx.getStorageSync('studentName') + '成功'
           })
           that.getList()
         }
       })
-    }else {
+    } else {
       wx.showToast({
         title: '请先选择孩子',
       })
@@ -107,18 +86,21 @@ Page({
       wx.navigateTo({
         url: '../lowerEyeSight/lowerEyeSight?flag=' + '弱视训练'
       })
-    }else if(this.data.pName == '视觉训练') {
+    } else if (this.data.pName == '视觉训练') {
       wx.navigateTo({
         url: '../eyeSight/eyeSight?flag=' + '视觉训练'
       })
     }
-   
+
   },
   myevent(e) {
     this.setData({
       studentName: e.detail.params,
-      gender: e.detail.gender
+      gender: e.detail.gender,
+      childrenId: e.detail.studentId,
+      studentName: e.detail.studentName
     })
+    this.getList();
   },
   newchildrenlist(e) {
     let curStudent = e.detail.newChildrenList;
@@ -136,19 +118,13 @@ Page({
     wx.setStorageSync('gender', curStudent[0].gender)
   },
   inputPhone(e) {
-    //let phone = e.detail.value;
-    let phone = '19931372308';
+    let phone = e.detail.value;
     if (phone.length == 11) {
       let that = this;
       let url = app.globalData.URL + 'getChildrenByPhone', data = {
         phone: phone
       };
       app.wxRequest(url, data, (res) => {
-        if (res.data.data) {
-          // res.data.data.push({
-          //   name: '添加孩子'
-          // })
-        }
         if (res.data.status == 200) {
           that.setData({
             selectArray: res.data.data,
@@ -162,12 +138,10 @@ Page({
               studentId: res.data.data[0].id,
               gender: res.data.data[0].gender,
               studentName: res.data.data[0].name,
-              childrenId: res.data.data[0].id
+              childrenId: res.data.data[0].id,
             })
-            wx.setStorageSync('studentId', res.data.data[0].id);
-            wx.setStorageSync('gender', res.data.data[0].gender);
-            wx.setStorageSync('studentName', res.data.data[0].name);
           }
+          that.getList();
         } else if (res.data.status == 10220) {
           that.setData({
             childrenList: [],

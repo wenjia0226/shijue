@@ -1,20 +1,39 @@
-/* page/tabBar/index/index.wxss */
-.mainWrap {
-  background: #F3F3F3;
+/* way/way.wxss */
+.addBtn {
+  text-align: right;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: red;
+  padding: 20rpx;
+}
+.combination {
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  flex: 1;
+}
+.itemWrap {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  align-items: center;
+  border-bottom: 2rpx dotted grey;
+}
+.imgBox {
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 30rpx;
+}
+.imgBox > image{
+  width: 100%;
+  height: 100%;
 }
 .topWrap {
  background: -webkit-linear-gradient(bottom, #4db2fd, #5F1BE8);
  display: flex;
  flex-direction: column;
  align-items: center;
- padding: 20rpx 0 20rpx;
+ width: 100%;
+ height: 300rpx;
+ position: relative;
 }
 /* 头部 */
 .avaterBox {
@@ -39,15 +58,15 @@
 }
 .changeStu {
   position: absolute;
-  right: 0rpx;
-  bottom: 0;
+  right: 20rpx;
+  bottom: 100rpx;
+  width: 200rpx;
 }
-.centerWrap {
-  display: flex;
-}
-.centerWrap > image {
-  width: 100rpx;
-  height: 100rpx;
+.inputPh {
+  padding: 10rpx 20rpx;
+  border: 2rpx solid grey;
+  margin: 10rpx;
+  font-size: 28rpx;
 }
 .combinationItem {
   display: flex;

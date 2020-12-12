@@ -12,7 +12,7 @@
      <text class="txt">训练计划</text>
      <image  src="/image/righticon.png"></image>
   </view>
-   <view class="itemBox" >
+   <view class="itemBox" bindtap="gotoChildren" >
      <text class="txt">孩子管理</text>
      <image  src="/image/righticon.png"></image>
   </view>

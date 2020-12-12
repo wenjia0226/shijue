@@ -15,8 +15,22 @@
     </view>
     <view class="stuName" wx:if="{{phone && studentName}}">{{studentName}}</view>
   </view>
-  <view class="centerWrap" >
-    <image src="/image/lock.png" mode="aspectFit"></image>
-    <image src="/image/open.png" mode="aspectFit"></image>
+  <view class="centerWrap" wx:for="{{combinationList}}" >
+    <view class="combinationItem">
+       <view class="itemName" data-id="{{item.combinationId}}" bindtap="gotoDetail">{{item.combinationName}}</view>
+       <!-- 1 解锁 2 未解锁 1完成 2 未完成 -->
+       <view class="itemlock nofinish" wx:if="{{item.isOpen == 1}}">
+        <image src="/image/open2.png" mode="aspectFit"></image>
+       </view>
+       <view class="itemlock nofinish" wx:if="{{item.isOpen == 2}}">
+        <image src="/image/lock.png" mode="aspectFit"></image>
+       </view>
+        <view class="itemlock finish" wx:if="{{item.isSuccess == 1}}">
+          <image src="/image/finish.png" mode="aspectFit"></image>
+        </view>
+        <view class="itemlock finish" wx:if="{{item.isSuccess == 2}}"  data-id ="{{item.id}}" data-isOpen="{{item.isOpen}}" bindtap="finish">
+          <image src="/image/nofinish.png" mode="aspectFit"></image>
+        </view>
+    </view>
   </view>
  </view>
