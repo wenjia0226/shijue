@@ -75,7 +75,7 @@ Page({
   gotoDetail(e){
     let id = e.target.dataset.id;
     wx.navigateTo({
-      url: '../detail/detail?id=' + id
+      url: '../recordDetail/recordDetail?id=' + id
     })
   },
   pushWay(e) {
@@ -84,13 +84,17 @@ Page({
       let that = this;
       let url = app.globalData.URL + 'combinationToChildren',
       data = {
-        childrenId: wx.getStorageSync('studentId'),
+        childrenId: this.data.childrenId,
         combinationId: id
       }
       app.wxRequest(url, data, (res) => {
         if (res.data.status == 200) {
-          wx.showToast({
-            title: '推送至' + wx.getStorageSync('studentName')+ '成功'
+          // wx.showToast({
+          //   title: '推送至' +this.data.studentName + '成功'
+          // })
+          wx.showModal({
+            content: '推送至' + this.data.studentName + '成功',
+            showCancel: false
           })
           that.getList()
         }
@@ -117,7 +121,8 @@ Page({
   myevent(e) {
     this.setData({
       studentName: e.detail.params,
-      gender: e.detail.gender
+      gender: e.detail.gender,
+      childrenId: e.detail.studentId
     })
   },
   newchildrenlist(e) {
@@ -126,48 +131,30 @@ Page({
       selectArray: e.detail.newChildrenList
     })
     this.setData({
-      studentId: curStudent[0].id,
+      childrenId: curStudent[0].id,
       studentName: curStudent[0].name,
-      birthday: curStudent[0].birthday,
       gender: curStudent[0].gender
     })
-    wx.setStorageSync('studentName', curStudent[0].name);
-    wx.setStorageSync('studentId', curStudent[0].id);
-    wx.setStorageSync('gender', curStudent[0].gender)
   },
   inputPhone(e) {
-    //let phone = e.detail.value;
-    let phone = '19931372308';
+    let phone = e.detail.value;
+    //let phone = '19931372308';
     if (phone.length == 11) {
       let that = this;
       let url = app.globalData.URL + 'getChildrenByPhone', data = {
         phone: phone
       };
       app.wxRequest(url, data, (res) => {
-        if (res.data.data) {
-          // res.data.data.push({
-          //   name: '添加孩子'
-          // })
-        }
         if (res.data.status == 200) {
           that.setData({
             selectArray: res.data.data,
             childrenList: res.data.data,
-            show: true
+            show: true,
+            gender: res.data.data[0].gender,
+            studentName: res.data.data[0].name,
+            childrenId: res.data.data[0].id
           })
-          // 如果本地没有孩子
-          if (!this.data.studentId) {
-            // 临时绑定的孩子后孩子设置
-            that.setData({
-              studentId: res.data.data[0].id,
-              gender: res.data.data[0].gender,
-              studentName: res.data.data[0].name,
-              childrenId: res.data.data[0].id
-            })
-            wx.setStorageSync('studentId', res.data.data[0].id);
-            wx.setStorageSync('gender', res.data.data[0].gender);
-            wx.setStorageSync('studentName', res.data.data[0].name);
-          }
+          
         } else if (res.data.status == 10220) {
           that.setData({
             childrenList: [],

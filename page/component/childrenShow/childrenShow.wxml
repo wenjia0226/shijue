@@ -1,37 +1,64 @@
 <!--way/way.wxml-->
-<view >
-    <view class="inputPh" wx-if="{{!show}}" >
-        <input bindinput="inputPhone" placeholder="请先输入家长手机号"></input>
+<view class="mainWrap">
+  <view class="secondMainWrap" wx:if="{{!show}}">
+    <view class="phoneTitle" >请输入家长电话号码</view>
+    <view class="inputPh"  >
+      <input bindinput="inputPhone"></input>
     </view>
+    <view class="letterSpace" ></view>
+    <view class="logoBox" >
+      <image src="/image/logo.png"  mode="aspectFit"></image>
+    </view>
+  </view>
     <view class="topWrap" wx-if="{{show}}">
      <view class="avaterBox" >
-          <image src="https://www.guangliangkongjian.com/images/b1.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
-           <image src="https://www.guangliangkongjian.com/images/g1.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
+          <image src="/image/boy.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
+           <image src="/image/girl.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
       </view>
       <view class="changeStu">
        <selectChild  bindmyevent="myevent"  bindnewchildrenlist ="newchildrenlist" prop-array='{{selectArray}}'></selectChild>
       </view>
       <view class="stuName" wx-if="{{show}}">{{studentName}}</view>
     </view>
-  <view wx:for="{{eyeSightList}}" class='itemWrap'>
-     <view class="combinationItem">
-      <view class="itemName" data-id="{{item.combinationId}}" bindtap="gotoDetail">{{item.combinationName}}</view>
-       <!-- 1 解锁 2 未解锁 1完成 2 未完成 -->
-       <view class="itemlock nofinish" wx:if="{{item.isOpen == 1}}">
-        <image src="/image/open2.png" mode="aspectFit"></image>
-       </view>
-       <view class="itemlock nofinish" wx:if="{{item.isOpen == 2}}">
-        <image src="/image/lock.png" mode="aspectFit"></image>
-       </view>
-        <view class="itemlock finish" wx:if="{{item.isSuccess == 1}}">
-          <image src="/image/finish.png" mode="aspectFit"></image>
+    <view class="centerWrap"  wx:if="{{show}}">
+      <view class="conTitleBox">
+        <image src="/image/xunlian.png"></image>
+        <view class="conTilte">训练计划</view>
+      </view>
+      <view class="conTitleWrap titleBottom">
+        <view class="rank">顺序</view>
+        <view class="rankName">方案名称</view>
+        <view class="rankState">状态</view>
+        <view class="rankTime">调整顺序</view>
+        <view class="del"></view>
+      </view>
+       <view class="conTitleWrap" wx:for="{{eyeSightList}}" >
+        <view class="rank">{{index + 1}}</view>
+        <view class="rankName">{{item.combinationName}}</view>
+        <view class="rankState">
+          <view class="red" wx:if="{{item.isOpen == 1 && item.isSuccess == 2}}">未完成</view>
+          <view class="locked" wx:if="{{item.isOpen == 2}}">
+            <image src="/image/lock.png"></image>
+          </view>
+          <!--完成 已解锁 -->
+          <view class="finish" wx:if="{{item.isSuccess == 1}}">完成</view>
         </view>
-        <view class="itemlock finish" wx:if="{{item.isSuccess == 2}}">
-          <image src="/image/nofinish.png" mode="aspectFit"></image>
+        <view class="rankTime timeWrap">
+            <view class="itemlock" bindtap="up" data-id="{{item.id}}"  wx:if="{{index != 0}}" data-index="{{index}}"  bindtap="topClick">
+              <image src="/image/up.png" ></image>
+            </view>
+            <view class="itemlock" bindtap="down" data-id="{{item.id}}" wx:if="{{index != eyeSightList.length-1}}" data-index="{{index}}" bindtap="bottomClick">
+              <image src="/image/down2.png"  ></image>
+            </view>
         </view>
-      <view class="itemlock" bindtap="delete" data-id="{{item.id}}">
-        <image src="/image/delete.png" ></image>
+         <view class="del">
+          <view class="itemlock delWrap" bindtap="delete" data-id="{{item.id}}">
+              <image src="/image/delete.png" style="height: 40rpx"></image>
+            </view>
+         </view>
       </view>
     </view>
-  </view>
+    <view class="submitBtn"  wx-if="{{show && eyeSightList.length }}">
+      <view class="btn" bindtap="submitReset">提交调整顺序 </view>
+    </view>
 </view>

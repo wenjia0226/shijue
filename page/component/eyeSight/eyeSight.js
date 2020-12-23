@@ -8,44 +8,44 @@ Page({
     //   { title: "睫状肌-智能翻转镜-光度", name: '光度', checked: false },
     // ],
     timeList: [{
-      city_id: '睫状肌-智能翻转镜-1分钟/',
+      city_id: '1分钟-',
       city_name: '1分钟'
     }, {
-        city_id: '睫状肌-智能翻转镜-3分钟/',
+        city_id: '3分钟-',
       city_name: '3分钟'
     }, {
-        city_id: '睫状肌-智能翻转镜-5分钟/',
+        city_id: '5分钟-',
       city_name: '5分钟'
     },{
-        city_id: '睫状肌-智能翻转镜-10分钟/',
+        city_id: '10分钟-',
       city_name: '10分钟'
     }],
     sightList: [{// 光度
-      city_id: '睫状肌-智能翻转镜-±0.50D/',
+      city_id: '0.50D-',
       city_name: '±0.50D'
     }, {
-        city_id: '睫状肌-智能翻转镜-±1.00D/',
+        city_id: '±1.00D-',
         city_name: '±1.00D'
     }, {
-        city_id: '睫状肌-智能翻转镜-±1.50D/',
+        city_id: '±1.50D-',
         city_name: '±1.50D'
     }, {
-        city_id: '睫状肌-智能翻转镜-±2.00D/',
+        city_id: '±2.00D-',
         city_name: '±2.00D'
     },
       {
-        city_id: '睫状肌-智能翻转镜-±2.50D/',
+        city_id: '±2.50D-',
         city_name: '±2.50D'
     }],
     luminosityList: [  //视标大小
       {
-        city_id: '睫状肌-智能翻转镜-(20-30)/',
+        city_id: '(20-30)',
         city_name: '20/30'
       }, {
-        city_id: '睫状肌-智能翻转镜-(20-40)/',
+        city_id: '(20-40)',
         city_name: '20/40'
       }, {
-        city_id: '睫状肌-智能翻转镜-(20-50)/',
+        city_id: '(20-50)',
         city_name: '20/50'
       }
     ],
@@ -99,17 +99,17 @@ Page({
       city_id: '睫状肌-镜片阅读-±0.50D/',
         city_name: '±0.50D'
     }, {
-      city_id: '睫状肌-智能翻转镜-±1.00D/',
+        city_id: '睫状肌-镜片阅读-±1.00D/',
         city_name: '±1.00D'
     }, {
-      city_id: '睫状肌-智能翻转镜-±1.50D/',
+        city_id: '睫状肌-镜片阅读-±1.50D/',
         city_name: '±1.50D'
     }, {
-      city_id: '睫状肌-智能翻转镜-±2.00D/',
+        city_id: '睫状肌-镜片阅读-±2.00D/',
       city_name: '±2.00D'
     },
     {
-      city_id: '睫状肌-智能翻转镜-±2.50D/',
+      city_id: '睫状肌-镜片阅读-±2.50D/',
       city_name: '±2.50D'
     }],
     selected: {},
@@ -117,44 +117,44 @@ Page({
     //   { title: "睫状肌-双面镜镜卡组合-光度", name: '光度', checked: false }
     // ],
     timeList2: [{
-      city_id: '睫状肌-双面镜镜卡组合-1分钟/',
+      city_id: '1分钟-',
       city_name: '1分钟'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-3分钟/',
+        city_id: '3分钟-',
        city_name: '3分钟'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-5分钟/',
+        city_id: '5分钟-',
       city_name: '5分钟'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-10分钟/',
+        city_id: '10分钟-',
       city_name: '10分钟'
     }],
     sightList2: [{
-      city_id: '睫状肌-双面镜镜卡组合-±0.50D/',
+      city_id: '±0.50D-',
       city_name: '±0.50D'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-±1.00D/',
+        city_id: '±1.00D-',
       city_name: '±1.00D'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-±1.50D/',
+        city_id: '±1.50D-',
       city_name: '±1.50D'
     }, {
-        city_id: '睫状肌-双面镜镜卡组合-±2.00D/',
+        city_id: '±2.00D-',
       city_name: '±2.00D'
     },
     {
-      city_id: '睫状肌-双面镜镜卡组合-±2.50D/',
+      city_id: '±2.50D-',
       city_name: '±2.50D'
     }],
     luminosityList2: [  //视标大小
       {
-        city_id: '睫状肌-双面镜镜卡组合-(20-30)/',
+        city_id: '(20-30)',
         city_name: '20/30'
       }, {
-        city_id: '睫状肌-双面镜镜卡组合-(20-40)/',
+        city_id: '(20-40)',
         city_name: '20/40'
       }, {
-        city_id: '睫状肌-双面镜镜卡组合-(20-50)/',
+        city_id: '(20-50)',
         city_name: '20/50'
       }
     ],
@@ -275,6 +275,7 @@ Page({
        direction: options.flag
     };
     app.wxRequest(url, data, (res) => {
+      console.log(res.data.data)
       if (res.data.status == 200) {
         that.setData({
           eyeSightList: res.data.data
@@ -372,32 +373,82 @@ Page({
     let list = this.data.eyeSightList;
     let sum = '';
     for(let i = 0 ; i< list.length;i++) {
+      if (list[i].checked) {
+        sum = list[i].title + '/' + sum
+      }
       let tool = list[i].tool;
       for(let j = 0; j < tool.length; j++) {
         if(tool[j].checked) {
           sum += tool[j].pName + '-'+ tool[j].name + '/'
         }
+        if(tool[j].name == '智能翻转镜') {
+          if (this.data.eyeFlag1 || this.data.cover1 || this.data.luminosity) {
+            sum += '睫状肌-智能翻转镜-'
+          }
+        
+          if(this.data.eyeFlag1) {
+            sum += that.data.eyeFlag1;
+          }
+          if(this.data.cover1) {
+            sum += that.data.cover1;
+          }
+          if(this.data.luminosity) {
+            sum += that.data.luminosity;
+          }
+          sum += '/'
+        } else if (tool[j].name == '双面镜镜卡组合') {
+          if (this.data.eyeFlag2 || this.data.cover2 || this.data.luminosity2) {
+            sum += '睫状肌-双面镜镜卡组合-'
+          }
+          if (this.data.eyeFlag2) {
+            sum += that.data.eyeFlag2;
+          }
+          if (this.data.cover2) {
+            sum += that.data.cover2;
+          }
+          if (this.data.luminosity2) {
+            sum += that.data.luminosity2;
+          }
+          sum += '/'
+        }else if(tool[j].name == '镜片阅读') {
+          sum += this.data.eyeRead;
+        }else if(tool[j].name == '眼动力') {
+         
+        }else if(tool[j].name == '圆盘') {
+          let boxList = that.data.boxList;
+          for (let n = 0; n < boxList.length; n++) {
+            if (boxList[n].checked) {
+              sum = boxList[n].title + '/' + sum
+            }
+          }
+        }
       }
     }
-    let eyePowerList = this.data.eyePowerList;
-    for (let m = 0; m < eyePowerList.length; m++) {
-      if (eyePowerList[m].checked) {
-        sum = eyePowerList[m].title + '/' + sum
-      }
-    }
-    let boxList = this.data.boxList;
-    for (let n = 0; n < boxList.length; n++) {
-      if (boxList[n].checked) {
-        sum =  boxList[n].title + '/' + sum
-      }
-    }
-    sum += this.data.cover1;
-    sum += this.data.eyeFlag1;
-    sum += this.data.cover2;
-    sum += this.data.eyeFlag2;
-    sum += this.data.eyeRead;
-    sum += this.data.luminosity;
-    sum += this.data.luminosity2;
+    // let eyePowerList = that.data.eyePowerList;
+    // for (let m = 0; m < eyePowerList.length; m++) {
+    //   if (eyePowerList[m].checked) {
+    //     sum = eyePowerList[m].title + '/' + sum
+    //   }
+    // }
+    // console.log(this.data.eyePowerList, 999)
+    // for (let m = 0; m < eyePowerList.length; m++) {
+    //   if (eyePowerList[m].checked) {
+    //     sum = eyePowerList[m].title + '/' + sum
+    //   }
+    // }
+    // let boxList = this.data.boxList;
+    // for (let n = 0; n < boxList.length; n++) {
+    //   if (boxList[n].checked) {
+    //     sum =  boxList[n].title + '/' + sum
+    //   }
+    // }
+    // sum += this.data.cover1;
+    // sum += this.data.eyeFlag1;
+    // sum += this.data.cover2;
+    // sum += this.data.eyeFlag2;
+    // sum += this.data.eyeRead;
+    // sum += this.data.luminosity;
+    // sum += this.data.luminosity2;
     let url = app.globalData.URL + 'pushTrainCombination', data = {
       name: this.data.name,
       combination: sum,

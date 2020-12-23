@@ -3,13 +3,13 @@
   <scroll-view scroll-y>
     <view class="itemWrap" wx:for="{{eyeSightList}}"data-row="{{item.row}}" bindtap="finish" >
       <view class="name">{{item.name}}</view>
-      <view class="common " wx:if="{{item.isSuccess == 2}}">
+      <!-- <view class="common " wx:if="{{item.isSuccess == 2}}">
         <view class="noFininsh">未完成</view>
         <view class="redO"></view>
       </view>
       <view class="common" wx:if="{{item.isSuccess == 1}}">
         <view class="finish">完成</view>
-      </view>
+      </view> -->
     </view>
   </scroll-view>
 </view>

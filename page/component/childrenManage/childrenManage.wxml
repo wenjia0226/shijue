@@ -9,9 +9,9 @@
     </view>
     <view class="logo">
       <!-- 男孩及段位 -->
-     <image src="https://www.guangliangkongjian.com/images/b1.png"  mode="aspectFit" wx:if="{{ item.gender == 0}}"></image>
+     <image src="/image/boy.png"  mode="aspectFit" wx:if="{{ item.gender == 0}}"></image>
       <!-- 女孩及段位 -->
-    <image src="https://www.guangliangkongjian.com/images/g1.png"  mode="aspectFit" wx:if="{{ item.gender == 1 }}"></image>        
+    <image src="/image/girl.png"  mode="aspectFit" wx:if="{{ item.gender == 1 }}"></image>        
     </view>
     <view class ="text">
         <view class="name">姓名：{{item.name}}</view>

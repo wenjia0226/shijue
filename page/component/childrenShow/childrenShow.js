@@ -12,10 +12,64 @@ Page({
     studentName: '',
     studentId: ''
   },
+  //位置向上移动
+  topClick: function (e) {
+    var that = this
+    var index = e.currentTarget.dataset.index
+    var one = that.data.eyeSightList[index]
+    var two = that.data.eyeSightList[index - 1]
+    var index2 = index - 1
+    var data1 = "eyeSightList[" + index + "]"
+    var data2 = "eyeSightList[" + index2 + "]"
+    that.setData({
+      [data1]: two,
+      [data2]: one
+    })
+  },
+  // 位置向下移动
+  bottomClick: function (e) {
+    var that = this
+    var index = e.currentTarget.dataset.index
+    var one = that.data.eyeSightList[index]
+    var two = that.data.eyeSightList[index + 1]
+    var index2 = index + 1
+    var data1 = "eyeSightList[" + index + "]"
+    var data2 = "eyeSightList[" + index2 + "]"
+    that.setData({
+      [data1]: two,
+      [data2]: one
+    })
+  },
+  submitReset() {
+    let that = this;
+    let sum = '';
+    let eyeSightList = this.data.eyeSightList;
+    for(let i = 0 ; i < eyeSightList.length; i++) {
+      if (i !== eyeSightList.length -1) {
+        sum += eyeSightList[i].id + '-'
+      }else {
+        sum += eyeSightList[i].id
+      }
+    }
+    let url = app.globalData.URL + 'saveSort', data = {
+      sort: sum
+    };
+    app.wxRequest(url, data, (res) => {
+      // console.log(res)
+      if(res.data.status == 200) {
+        wx.showModal({
+          content: '调整顺序成功',
+          showCancel: false
+        })
+        that.getList();
+      }
+    }) 
+  },
   getList() {
     let that = this;
-    let url = app.globalData.URL + 'childrenCombinationList', data = {
-      childrenId: this.data.childrenId
+    let url = app.globalData.URL + 'clertChildrenCombinationList', data = {
+      childrenId: this.data.childrenId,
+      openId: wx.getStorageSync('openId')
     };
     app.wxRequest(url, data, (res) => {
       if (res.data.status == 200) {
@@ -113,12 +167,10 @@ Page({
       birthday: curStudent[0].birthday,
       gender: curStudent[0].gender
     })
-    wx.setStorageSync('studentName', curStudent[0].name);
-    wx.setStorageSync('studentId', curStudent[0].id);
-    wx.setStorageSync('gender', curStudent[0].gender)
   },
   inputPhone(e) {
-    let phone = e.detail.value;
+   let phone = e.detail.value;
+   //let phone = '19931372308';
     if (phone.length == 11) {
       let that = this;
       let url = app.globalData.URL + 'getChildrenByPhone', data = {

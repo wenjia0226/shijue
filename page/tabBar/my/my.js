@@ -14,12 +14,56 @@ Page({
     gender: 2,
     balance: '',
     show: false,
-    tempFlag: 2
+    reminShow: false,
+    tempFlag: 2,
+    newPhone: ''
   },
   onLoad() {
     this.setData({
       phone: wx.getStorageSync('phone')
     })
+  },
+  inputN(e){
+    let input = e.detail.value;
+    this.setData({
+      newPhone: input
+    })
+  },
+  save() {
+    if (this.data.newPhone.length !==11) {
+      wx.showModal({
+        content: '手机号应为11位数',
+        showCancel:false
+      })
+      this.hideRemin();
+    }else {
+      this.setData({
+        phoneNum: this.data.newPhone
+      })
+      wx.setStorageSync('phoneNum', this.data.newPhone)
+      let that = this;
+      let url = app.globalData.URL + "manualBindingPhone", data = {
+        openId: wx.getStorageSync('openId'),
+        phone: this.data.newPhone
+      };
+      app.wxRequest(url, data, (res) => {
+        console.log(res)
+        that.hideRemin();
+      })
+    }
+  },
+  hideRemin() {
+    this.setData({
+      reminShow: false
+    })
+  },
+  showRemin() {
+    this.setData({
+      reminShow: true
+    })
+  },
+  notGetPhone() {
+    this.showRemin();
   },
   gotoCode() {
     wx.navigateTo({
@@ -37,7 +81,6 @@ Page({
       })
     }
   },
-
   onShow() {
     this.setData({
       phone: wx.getStorageSync('phone'),
@@ -47,6 +90,7 @@ Page({
         this.setData({
           studentName: wx.getStorageSync('studentName'),
           gender: wx.getStorageSync('gender'),
+          phoneNum: wx.getStorageSync('phoneNum')
         })
       } else {
         this.setData({
@@ -205,6 +249,7 @@ Page({
               that.setData({
                 phoneNum: res.data.data
               })
+              wx.setStorageSync('phoneNum', res.data.data)
               wx.switchTab({
                 url: '/page/tabBar/my/my'
               })
@@ -228,6 +273,5 @@ Page({
         content: '请先授权',
       })
     }
-  },
-  
+  }
 })

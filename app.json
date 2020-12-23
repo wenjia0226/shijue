@@ -2,7 +2,7 @@
   "pages": [
     "page/tabBar/index/index",
     "page/tabBar/my/my"
-  
+   
   ],
   "tabBar": {
     "list": [
@@ -37,7 +37,9 @@
         "lowerEyeSight/lowerEyeSight",
         "detail/detail",
         "selectChild/selectChild",
-        "childrenShow/childrenShow"
+        "childrenShow/childrenShow",
+        "recordList/recordList",
+        "recordDetail/recordDetail"
       ]
     }
   ],

@@ -5,44 +5,44 @@ Page({
     eyeSightList: [],
     name: '',
     timeList: [{
-      city_id: '双眼调节训练-智能翻转镜-1分钟/',
+      city_id: '1分钟-',
       city_name: '1分钟'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-3分钟/',
+      city_id: '3分钟-',
       city_name: '3分钟'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-5分钟/',
+      city_id: '5分钟-',
       city_name: '5分钟'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-10分钟/',
+      city_id: '10分钟-',
       city_name: '10分钟'
     }],
     sightList: [{// 光度
-      city_id: '双眼调节训练-智能翻转镜-±0.50D/',
+      city_id: '0.50D-',
       city_name: '±0.50D'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-±1.00D/',
+      city_id: '±1.00D-',
       city_name: '±1.00D'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-±1.50D/',
+      city_id: '±1.50D-',
       city_name: '±1.50D'
     }, {
-        city_id: '双眼调节训练-智能翻转镜-±2.00D/',
+      city_id: '±2.00D-',
       city_name: '±2.00D'
     },
     {
-      city_id: '双眼调节训练-智能翻转镜-±2.50D/',
+      city_id: '±2.50D-',
       city_name: '±2.50D'
     }],
     luminosityList: [  //视标大小
       {
-        city_id: '双眼调节训练-智能翻转镜-(20-30)/',
+        city_id: '(20-30)',
         city_name: '20/30'
       }, {
-        city_id: '双眼调节训练-智能翻转镜-(20-40)/',
+        city_id: '(20-40)',
         city_name: '20/40'
       }, {
-        city_id: '双眼调节训练-智能翻转镜-(20-50)/',
+        city_id: '(20-50)',
         city_name: '20/50'
       }
     ],
@@ -111,53 +111,53 @@ Page({
       }],
     selected: {},
     timeList2: [{
-      city_id: '单眼调节训练-双面镜-1分钟/',
+      city_id: '1分钟-',
       city_name: '1分钟'
     }, {
-        city_id: '单眼调节训练-双面镜-3分钟/',
+      city_id: '3分钟-',
       city_name: '3分钟'
     }, {
-        city_id: '单眼调节训练-双面镜-5分钟/',
+      city_id: '5分钟-',
       city_name: '5分钟'
     }, {
-        city_id: '单眼调节训练-双面镜-10分钟/',
+      city_id: '10分钟-',
       city_name: '10分钟'
     }],
     sightList2: [{
-      city_id: '单眼调节训练-双面镜-±0.50D/',
+      city_id: '±0.50D-',
       city_name: '±0.50D'
     }, {
-      city_id: '单眼调节训练-双面镜-±1.00D/',
+      city_id: '±1.00D-',
       city_name: '±1.00D'
     }, {
-        city_id: '单眼调节训练-双面镜-±1.50D/',
+      city_id: '±1.50D-',
       city_name: '±1.50D'
     }, {
-        city_id: '单眼调节训练-双面镜-±2.00D/',
+      city_id: '±2.00D-',
       city_name: '±2.00D'
     },
     {
-      city_id: '单眼调节训练-双面镜-±2.50D/',
+      city_id: '±2.50D-',
       city_name: '±2.50D'
     }],
     luminosityList2: [  //视标大小
       {
-        city_id: '单眼调节训练-双面镜-(20-30)/',
+        city_id: '(20-30)',
         city_name: '20/30'
       }, {
-        city_id: '单眼调节训练-双面镜-(20-40)/',
+        city_id: '(20-40)',
         city_name: '20/40'
       }, {
-        city_id: '单眼调节训练-双面镜-(20-50)/',
+        city_id: '(20-50)',
         city_name: '20/50'
       }
     ],
     eyePowerList: [
-      {title: "视刺激-弱视综合治疗仪-光刷", name: '光刷', checked: false },
-      {title: "视刺激-弱视综合治疗仪-红闪", name: '红闪', checked: false },
-      {title: "视刺激-弱视综合治疗仪-后像", name: '后像', checked: false },
-      {title: "视刺激-弱视综合治疗仪-光栅", name: '光栅', checked: false },
-      {title: "视刺激-弱视综合治疗仪-棋格", name: '棋格', checked: false }
+      {title: "光刷-", name: '光刷', checked: false },
+      {title: "红闪-", name: '红闪', checked: false },
+      {title: "后像-", name: '后像', checked: false },
+      {title: "光栅-", name: '光栅', checked: false },
+      {title: "棋格-", name: '棋格', checked: false }
     ],
     boxList: [
       { title: "眼球运动-圆盘-按钮一", name: '按钮一', checked: false },
@@ -374,32 +374,63 @@ Page({
     let list = this.data.eyeSightList;
     let sum = '';
     for (let i = 0; i < list.length; i++) {
+      if (list[i].checked) {
+        sum = list[i].title + '/' + sum
+      }
       let tool = list[i].tool;
       for (let j = 0; j < tool.length; j++) {
         if (tool[j].checked) {
           sum += tool[j].pName + '-' + tool[j].name + '/'
         }
+        if (tool[j].name == '智能翻转镜' && tool[j].pName == '双眼调节训练') {
+          if (this.data.eyeFlag1 || this.data.cover1 || this.data.luminosity) {
+            sum += '双眼调节训练-智能翻转镜-'
+          }
+          if (this.data.eyeFlag1) {
+            sum += that.data.eyeFlag1;
+          }
+          if (this.data.cover1) {
+            sum += that.data.cover1;
+          }
+          if (this.data.luminosity) {
+            sum += that.data.luminosity;
+          }
+          sum += '/'
+        } else if (tool[j].name == '双面镜' && tool[j].pName == '单眼调节训练') {       
+          if (this.data.eyeFlag2 || this.data.cover2 || this.data.luminosity2) {
+            sum += '单眼调节训练-双面镜-'
+          }
+          if (this.data.eyeFlag2) {
+            sum += that.data.eyeFlag2;
+          }
+          if (this.data.cover2) {
+            sum += that.data.cover2;
+          }
+          if (this.data.luminosity2) {
+            sum += that.data.luminosity2;
+          }
+          sum += '/'
+        } else if (tool[j].name == '镜片阅读') {
+          sum += this.data.eyeRead;
+        } else if (tool[j].name == '弱视综合治疗仪') {
+           sum += '视刺激-弱视综合治疗仪-';
+           let eyePowerList = this.data.eyePowerList;
+           for (let m = 0; m < eyePowerList.length; m++) {
+            if (eyePowerList[m].checked) {
+            sum += eyePowerList[m].title
+            }
+          }
+          sum += '/'
+        } else if (tool[j].name == '圆盘') {
+          let boxList = that.data.boxList;
+          for (let n = 0; n < boxList.length; n++) {
+            if (boxList[n].checked) {
+              sum = boxList[n].title + '/' + sum
+            }
+          }
+        }
       }
     }
-    let eyePowerList = this.data.eyePowerList;
-    for (let m = 0; m < eyePowerList.length; m++) {
-      if (eyePowerList[m].checked) {
-        sum = eyePowerList[m].title + '/' + sum
-      }
-    }
-    let boxList = this.data.boxList;
-    for (let n = 0; n < boxList.length; n++) {
-      if (boxList[n].checked) {
-        sum = boxList[n].title + '/' + sum
-      }
-    }
-    sum += this.data.cover1;
-    sum += this.data.eyeFlag1;
-    sum += this.data.cover2;
-    sum += this.data.eyeFlag2;
-    sum += this.data.eyeRead;
-    sum += this.data.luminosity;
-    sum += this.data.luminosity2;
     let url = app.globalData.URL + 'pushTrainCombination', data = {
       name: this.data.name,
       combination: sum,

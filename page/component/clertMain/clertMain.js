@@ -38,7 +38,8 @@ Page({
       //console.log(res)
       if(res.data.status == 200) {
         wx.showToast({
-          title: '打卡成功'
+          title:  res.data.data,
+          duration: 1000
         })
       }
     })

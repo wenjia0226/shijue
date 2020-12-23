@@ -63,11 +63,11 @@ Component({
       let gender = e.target.dataset.gender;
       let birthday = e.target.dataset.birthday;
       let balance = e.target.dataset.balance;
-      wx.setStorageSync('studentName', nowText);
-      wx.setStorageSync('birthday', birthday);
-      wx.setStorageSync('studentId', id);
-      wx.setStorageSync('balance', balance);
-      wx.setStorageSync('gender', gender);
+      // wx.setStorageSync('studentName', nowText);
+      // wx.setStorageSync('birthday', birthday);
+      // wx.setStorageSync('studentId', id);
+      // wx.setStorageSync('balance', balance);
+      // wx.setStorageSync('gender', gender);
       // 自定义一个事件，并且传值
       this.triggerEvent('myevent', { studentId: id, studentName: nowText, params: nowText, gender: gender, birthday: birthday, balance: balance })
       // this.triggerEvent('chilrenList',{childrenList: childrenList})
@@ -84,49 +84,6 @@ Component({
       wx.navigateTo({
         url: '/manual/manual'
       })
-    },
-    //扫码添加
-    // gotoScan() {
-    //   let pages = getCurrentPages();
-    //   let prevpage = pages[pages.length -1];//上一个页面对象
-    //   this.setData({
-    //     prevRoute: prevpage.route
-    //   })
-
-    //   let that = this;
-    //   wx.scanCode({  //扫码
-    //     success(res) {
-    //       var str = res.path;
-    //       let stuId = str.split('=')[1];
-    //       //获取到学生id后添加孩子
-    //       wx.setStorageSync('studentId', stuId);
-    //       let openId = wx.getStorageSync('openId');
-    //       let url = app.globalData.URL + 'binding', data = {
-    //         studentId: stuId,
-    //         openId: wx.getStorageSync('openId')
-    //       };
-    //       wx.showLoading({
-    //         title: '加载中...',
-    //       })
-    //       app.wxRequest(url, data, (res) => {
-    //         if(res.data.data) {
-    //           res.data.data.push({
-    //             name: '添加孩子'
-    //           })
-    //         }
-    //         that.setData({
-    //           childrenList: res.data.data,
-    //           show: false
-    //         })
-    //         // 自定义一个事件，并且传值
-
-    //         that.triggerEvent('newchildrenlist', { newChildrenList: that.data.childrenList, stuId: stuId})
-    //         that.selectToggle();  
-    //       }, (err) => {
-    //         console.log(err)
-    //       })
-    //     }
-    //   })
-    // }
+    }
   }
 })

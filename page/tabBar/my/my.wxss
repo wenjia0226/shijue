@@ -496,5 +496,93 @@ button { background-color: #fff;}
   text-align:left !important;
   padding: 0 !important;
   background: transparent;
+}
+.noPhone {
+  font-size: 20rpx;
+  color:#eee
+}
 
+/* 提示跳转 */
+
+.greyBg {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 10;
+  -moz-opacity: 0.7;
+  opacity: 0.70;
+  filter: alpha(opacity=70);
+}
+.showRemin {
+  position: fixed;
+  top: 40%;
+  left: 10%;
+  width: 80%;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 12;
+  overflow: auto;
+  margin: auto;
+  color: #000;
+  border-radius: 10rpx;
+}
+.quxiaoRemin{
+  text-align: right;
+  height: 40rpx;
+  margin: 20rpx;
+}
+.quxiaoRemin> image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.txt{
+  padding: 10rpx 0;
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.modeTitleRemin{
+  font-size: 30rpx;
+  text-align: center;
+  margin:  20rpx;
+}
+.chooseBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0;
+}
+.chooseItem{
+  padding: 6rpx 0;
+  font-size: 30rpx;
+  background: #3e65e4;
+  text-align: center;
+  border-radius: 30rpx;
+  color: #fff;
+  width: 150rpx;
+}
+.chooseItem:first-of-type{
+  border-right: 1rpx solid grey;
+}
+.inputBox {
+  border: 1rpx solid #eee;
+  border-radius: 5rpx;
+  line-height: 40rpx;
+  height:40rpx;
+  padding:5rpx 10rpx;
+  font-size: 24rpx;
+}
+.quxiaoRemin{
+  text-align: right;
+  height: 40rpx;
+  margin: 20rpx;
+}
+.quxiaoRemin> image {
+  width: 30rpx;
+  height: 30rpx;
 }

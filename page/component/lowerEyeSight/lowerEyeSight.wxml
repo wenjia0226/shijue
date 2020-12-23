@@ -16,8 +16,7 @@
       </checkbox-group>
     </view>
     </view>
-    
-     <view class="itemAll"  wx:if="{{tool.name == '双面镜' && tool.pName == '单眼调节训练'}}">
+    <view class="itemAll"  wx:if="{{tool.name == '双面镜'}}">
       <view class="titleTime">光度</view>
       <view class="select-wrap">
         <Select id="select" options="{{sightList2}}" key="city_id" text="city_name" bind:change="changeSight2"></Select>
@@ -32,6 +31,20 @@
       </view>
     </view>
 
+     <view class="itemAll"  wx:if="{{tool.name == '双面镜' && tool.pName == '单眼调节训练'}}">
+      <view class="titleTime">光度</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{sightList2}}" key="city_id" text="city_name" bind:change="changeSight2"></Select>
+      </view>
+      <view class="titleTime"> 时间</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{timeList2}}" key="city_id" text="city_name" bind:change="change2"></Select>
+      </view>
+      <view class="titleTime"> 视标大小</view>
+      <view class="select-wrap">
+        <Select id="select" options="{{luminosityList2}}" key="city_id" text="city_name" bind:change="changeLuminosity2"></Select>
+      </view>
+    </view>
     <view class="itemAll"  wx:if="{{tool.name == '智能翻转镜' && tool.pName == '双眼调节训练'}}">
       <view class="titleTime">光度</view>
       <view class="select-wrap">

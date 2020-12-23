@@ -6,7 +6,6 @@ Page({
     id: ''
   },
   onLoad: function (options) {
-    console.log(options)
     let id = options.id;
     let combinationId = options.combinationId;
     this.setData({
@@ -17,12 +16,11 @@ Page({
   },
   getList() {
     let that = this;
-    let url = app.globalData.URL + 'getCombinationParent', data = {
-      id: this.data.id,
-      combinationId: this.data.combinationId
+    let url = app.globalData.URL + 'getCombination', data = {
+      id: this.data.id
     };
     app.wxRequest(url, data, (res) => {
-      // console.log(res)
+      console.log(res)
       if (res.data.status == 200) {
         that.setData({
           eyeSightList: res.data.data
@@ -35,14 +33,14 @@ Page({
     let that = this;
     let url = app.globalData.URL + 'combinationSuccess', data = {
       row: row,
-     id: this.data.id
+      id: this.data.id
     };
     app.wxRequest(url, data, (res) => {
       // console.log(res)
-      if(res.data.status == 200) {
+      if (res.data.status == 200) {
         that.getList()
       }
     })
   }
- 
+
 })

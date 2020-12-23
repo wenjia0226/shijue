@@ -106,19 +106,30 @@ Page({
       title: '加载中...'
     })
     app.wxRequest(url, data, (res) => {
-      if (res.data.data) {
+      if (res.data.status == 200) {
         that.setData({
           combinationList: res.data.data
         })
       }
-      })
+    })
   },
   gotoDetail(e) {
     let id = e.currentTarget.dataset.id;
-    let that = this;
-    wx.navigateTo({
-      url: '/page/component/detail/detail?id=' + id
-    })
+    let combinationId = e.currentTarget.dataset.combinationid;
+    let isOpen = e.currentTarget.dataset.isopen;
+    if (isOpen == 1) {
+      let that = this;
+      wx.navigateTo({
+        url: '/page/component/detail/detail?id=' + id + '&combinationId=' + combinationId
+      })
+    }else if(isOpen == 2) {
+      wx.showModal({
+        content: '请先解锁',
+        showCancel: false
+        
+      })
+    }
+    
   },
   finish(e) {
     let id = e.currentTarget.dataset.id;
@@ -169,4 +180,9 @@ Page({
       show: false
     })
   },
+  gotoRecord() {
+    wx.navigateTo({
+      url: '/page/component/recordList/recordList'
+    })
+  }
 })

@@ -44,7 +44,6 @@ Page({
       hasUserInfo: true,
   
     })
-    console.log(e.detail)
     wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
     wx.setStorageSync("nickName", e.detail.userInfo.nickName);
     let encryptedData = e.detail.encryptedData, iv = e.detail.iv;

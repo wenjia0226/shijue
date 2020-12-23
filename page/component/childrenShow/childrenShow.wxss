@@ -1,4 +1,22 @@
 /* way/way.wxss */
+.mainWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+}
+.secondMainWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom,  #5c26e9 0%,#537af4 100%);
+  display: flex;
+  flex-direction: column;
+}
 .addBtn {
   text-align: right;
   font-size: 26rpx;
@@ -39,7 +57,7 @@
 .avaterBox {
   width: 600rpx;
   border-radius: 50%;
-  padding-bottom: 20rpx;
+  padding: 20rpx;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -65,8 +83,18 @@
 .inputPh {
   padding: 10rpx 20rpx;
   border: 2rpx solid grey;
-  margin: 10rpx;
+  margin: 10rpx auto;
   font-size: 28rpx;
+  background: #fff;
+  width: 80%;
+  border-radius: 10rpx;
+}
+.phoneTitle {
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 100rpx 30rpx 30rpx;
+  letter-spacing: 5rpx;
 }
 .combinationItem {
   display: flex;
@@ -85,12 +113,16 @@
   flex: 1
 }
 .itemlock {
-  width: 100rpx;
+  width: 50rpx;
   text-align: right;
+  height: 30 rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .itemlock > image {
   width: 40rpx;
-  height: 40rpx;
+  height: 50rpx;
 }
 .nofinish {
   color: red;
@@ -99,4 +131,110 @@
 .finish {
   color: green;
   font-weight: bold
+}
+.submitBtn {
+  margin: 20rpx 0 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  padding: 10rpx 20rpx;
+  width: 40%;
+  border-radius: 30rpx;
+  background: #3d66e4;
+  color: #fff;
+  font-weight:bold;
+  font-size: 30rpx;
+  text-align: center;
+  letter-spacing: 5rpx
+}
+.logoBox {
+  height: 200rpx;
+  width: 200rpx;
+  margin: 20rpx auto;
+}
+.logoBox > image {
+  width: 100%;
+  height: 100%;
+}
+.letterSpace {
+  flex: 1;
+}
+/* 中间 */
+.conTitleBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10rpx;
+}
+.conTilte {
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  padding: 0 10rpx;
+  font-size: 30rpx;
+}
+.conTitleBox > image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.conTitleWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15rpx 0;
+  padding: 10rpx 0;
+  border-bottom: 1rpx dotted #eee;
+}
+.rankName {
+  flex: 1;
+}
+.rank, .rankName, .rankState, .rankTime {
+  font-size: 28rpx;
+  padding: 10rpx;
+  text-align: center;
+}
+.rankTime {
+  width: 200rpx;
+  text-align: center;
+}
+.rank {
+  width: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.rankState {
+  width: 140rpx;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.centerWrap {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 10rpx;
+}
+.timeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.del {
+  width: 40rpx;
+}
+.locked {
+  width: 40rpx;
+  height: 40rpx;
+}
+.locked > image {
+  width: 100%;
+  height: 100%;
+}
+.finish {
+  color: green;
+}
+.red {
+  color: red;
 }

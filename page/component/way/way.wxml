@@ -1,12 +1,15 @@
 <!--way/way.wxml-->
 <view >
-    <view class="inputPh" wx-if="{{!show}}" >
-        <input bindinput="inputPhone" placeholder="请先输入家长手机号"></input>
+    <view class="topBox"  wx-if="{{!show}}">
+      <view class="phoneTitle">请输入家长手机号</view>
+        <view class="inputPh" >
+            <input bindinput="inputPhone"></input>
+        </view>
     </view>
     <view class="topWrap" wx-if="{{show}}">
      <view class="avaterBox" >
-          <image src="https://www.guangliangkongjian.com/images/b1.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
-           <image src="https://www.guangliangkongjian.com/images/g1.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
+          <image src="/image/boy.png"  mode="aspectFit" wx:if="{{gender == 0}}"></image>
+           <image src="/image/girl.png"  mode="aspectFit" wx:if="{{gender == 1}}"></image>
       </view>
       <view class="changeStu">
        <selectChild  bindmyevent="myevent"  bindnewchildrenlist ="newchildrenlist" prop-array='{{selectArray}}'></selectChild>
@@ -14,15 +17,33 @@
       <view class="stuName" wx-if="{{show}}">{{studentName}}</view>
     </view>
   <view class="addBtn" bindtap="gotoAdd">
-    <view >新增方式 </view>
+    <view>新增方式 </view>
   </view>
-  <view wx:for="{{eyeSightList}}" class='itemWrap'>
-   <view class="combination"data-id="{{item.id}}" bindtap="gotoDetail">{{item.name}}</view>
-   <view class="imgBox"> 
-    <image src="/image/push.png" data-id="{{item.id}}" bindtap="pushWay"></image>
-   </view>
-   <view class="imgBox" bindtap="delete" data-id="{{item.id}}">
-    <image src="/image/delete.png" ></image>
-   </view>
+  <view class="centerTitle" wx:if="{{eyeSightList.length}}"
+  style="padding: 20rpx 10rpx;box-shadow: 0 3rpx 3rpx 3rpx #eee;margin: 20rpx 30rpx">
+    <view class="praTitle wayName" style="font-weight: bold;color: #000">视觉训练方式</view>
+    <view class="praTitle name" style='color: grey;'>添加人</view>
+    <view class="praTitle time" style='color: grey;'>添加时间</view>
+    <view class="praTitle pushWay" style='color: grey;'>推送</view>
+    <view class="praTitle del" style='color: grey;'>删除</view>
+  </view>
+  <view class="centerTitle"  wx:for="{{eyeSightList}}" wx:if="{{eyeSightList.length}}" 
+    style="padding: 10rpx;border-bottom: 1rpx solid grey">
+    <view class="praTitle wayName" style="font-weight: bold;color: #000" data-id="{{item.id}}"bindtap="gotoDetail">{{item.name}}</view>
+    <view class="praTitle name">{{item.clert}}</view>
+    <view class="praTitle time" style="font-size: 22rpx">{{item.time}}</view>
+    <view class="praTitle pushWay">
+    <view class="imgBox"  data-id="{{item.id}}" bindtap="pushWay"> 
+        <image src="/image/push.png" data-id="{{item.id}}"></image>
+      </view>
+    </view>
+    <view class="praTitle del">
+      <view class="imgBox" data-id="{{item.id}}" bindtap="delete" >
+        <image src="/image/delete.png" ></image>
+      </view>
+    </view>
+  </view>
+  <view class="centerNoPlan" wx:if="{{eyeSightList.length == 0}}">
+    <view class="noPlan">暂无训练计划</view>
   </view>
 </view>

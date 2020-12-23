@@ -2,8 +2,7 @@
 .addBtn {
   text-align: right;
   font-size: 26rpx;
-  font-weight: bold;
-  color: red;
+  color: #5b32eb;
   padding: 20rpx;
 }
 .combination {
@@ -18,9 +17,8 @@
   border-bottom: 2rpx dotted grey;
 }
 .imgBox {
-  width: 40rpx;
-  height: 40rpx;
-  margin: 0 30rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 .imgBox > image{
   width: 100%;
@@ -39,7 +37,7 @@
 .avaterBox {
   width: 600rpx;
   border-radius: 50%;
-  padding-bottom: 20rpx;
+  padding: 20rpx;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -65,6 +63,62 @@
 .inputPh {
   padding: 10rpx 20rpx;
   border: 2rpx solid grey;
-  margin: 10rpx;
+  margin: 10rpx auto 30rpx;
   font-size: 28rpx;
+  background: #fff;
+  width: 80%;
+  border-radius: 10rpx;
+}
+.topBox {
+  background: #5b32eb;
+  padding: 50rpx;
+}
+.phoneTitle {
+  text-align: center;
+  color: #fff;
+  margin: 20rpx auto;
+  font-size: 30rpx;
+  letter-spacing: 3rpx;
+}
+.centerTitle {
+  display: flex;
+  margin: 10rpx 30rpx;
+}
+.praTitle {
+  font-size: 28rpx;
+  padding: 0 10rpx;
+}
+.name {
+  width: 100rpx;
+}
+.time {
+  width: 150rpx;
+  font-size: 20rpx;
+}
+.wayName {
+  flex: 1
+}
+.pushWay {
+  width: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.del {
+  width: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.centerNoPlan {
+  display: flex;
+  justify-content: center;
+  margin: 100rpx 20rpx;
+}
+.noPlan {
+  text-align: center;
+  padding: 30rpx auto;
+  font-size: 30rpx;
+  letter-spacing: 5rpx;
+  color: grey;
 }
