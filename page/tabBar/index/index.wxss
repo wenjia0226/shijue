@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: column;
   margin: 20rpx 10rpx;
-  flex: 1
+  flex: 1;
 }
 .conTitleBox {
   display: flex;
@@ -154,7 +154,7 @@
   letter-spacing: 5rpx;
 }
 .bottomWrap {
-  margin: 20rpx auto;
+  margin: 10rpx auto 20rpx;
 }
 .findRecord {
   display: flex;

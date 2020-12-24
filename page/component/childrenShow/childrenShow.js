@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data: {
     eyeSightList: [],
+    noRemove: {},
     pName: '',
     show: false,
     childrenId: '',
@@ -44,6 +45,7 @@ Page({
     let that = this;
     let sum = '';
     let eyeSightList = this.data.eyeSightList;
+    sum = this.data.noRemove.id + '-';
     for(let i = 0 ; i < eyeSightList.length; i++) {
       if (i !== eyeSightList.length -1) {
         sum += eyeSightList[i].id + '-'
@@ -73,8 +75,15 @@ Page({
     };
     app.wxRequest(url, data, (res) => {
       if (res.data.status == 200) {
+        console.log(res.data.data, 99)
+        let eyeSightList = res.data.data;
+        let noRemove = eyeSightList[0];
+        let moveList = eyeSightList.slice(1, eyeSightList.length);
+        console.log(noRemove,'noremove');
+        console.log(moveList, 'moveList')
         that.setData({
-          eyeSightList: res.data.data
+          eyeSightList: moveList,
+          noRemove: noRemove
         })
       }
     })

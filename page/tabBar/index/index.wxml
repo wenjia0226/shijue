@@ -16,40 +16,42 @@
       <view class="stuName" wx:if="{{phone && studentName}}">{{studentName}}</view>
     </view>
     <view class="centerWrap"  wx:if="{{combinationList.length}}">
-      <view class="conTitleBox">
-        <image src="/image/xunlian.png"></image>
-        <view class="conTilte">训练计划</view>
-      </view>
-      <view class="conTitleWrap titleBottom">
-        <view class="rank">顺序</view>
-        <view class="rankName">方案名称</view>
-        <view class="rankState">状态</view>
-        <view class="rankTime">完成时间</view>
-      </view>
-      <view class="conTitleWrap"  wx:for="{{combinationList}}" data-combinationId ="{{item.combinationId}}"
-       data-id="{{item.id}}" data-isOpen="{{item.isOpen}}" bindtap="gotoDetail" wx:if="{{combinationList.length}}">
-        <view class="rank  noral">
-          <view class="rankIndex">{{index + 1}}</view>
+      <scroll-view scroll-y style="height: 100%;">
+        <view class="conTitleBox">
+          <image src="/image/xunlian.png"></image>
+          <view class="conTilte">训练计划</view>
         </view>
-        <view class="rankName noral">{{item.combinationName}}</view>
-        <view class="rankState noral"   wx:if="{{item.isSuccess == 2}}">
-        <!-- 未完成已解锁 -->
-          <view class="{{item.isSuccess == 2 && item.isOpen == 1 ? 'noFininsh': ''}}"
-           wx:if="{{item.isSuccess == 2 && item.isOpen == 1 }}">未完成</view>
-          <view class="redO"  wx:if="{{item.isSuccess == 2 && item.isOpen == 1}}"></view>
-          <!-- 未完成未解锁 -->
-          <view class="{{item.isSuccess == 2 && item.isOpen == 2 ? 'noFininshNoLock': ''}}"
-          wx:if="{{item.isSuccess == 2 && item.isOpen == 2 }}">未完成</view>
-          <view class="lockSucc"  wx:if="{{item.isSuccess == 2 && item.isOpen == 2}}">
-            <image src="/image/lock.png"></image>
+        <view class="conTitleWrap titleBottom">
+          <view class="rank">顺序</view>
+          <view class="rankName">方案名称</view>
+          <view class="rankState">状态</view>
+          <view class="rankTime">完成时间</view>
+        </view>
+        <view class="conTitleWrap"  wx:for="{{combinationList}}" data-combinationId ="{{item.combinationId}}"
+        data-id="{{item.id}}" data-isOpen="{{item.isOpen}}" bindtap="gotoDetail" wx:if="{{combinationList.length}}">
+          <view class="rank  noral">
+            <view class="rankIndex">{{index + 1}}</view>
+          </view>
+          <view class="rankName noral">{{item.combinationName}}</view>
+          <view class="rankState noral"   wx:if="{{item.isSuccess == 2}}">
+          <!-- 未完成已解锁 -->
+            <view class="{{item.isSuccess == 2 && item.isOpen == 1 ? 'noFininsh': ''}}"
+            wx:if="{{item.isSuccess == 2 && item.isOpen == 1 }}">未完成</view>
+            <view class="redO"  wx:if="{{item.isSuccess == 2 && item.isOpen == 1}}"></view>
+            <!-- 未完成未解锁 -->
+            <view class="{{item.isSuccess == 2 && item.isOpen == 2 ? 'noFininshNoLock': ''}}"
+            wx:if="{{item.isSuccess == 2 && item.isOpen == 2 }}">未完成</view>
+            <view class="lockSucc"  wx:if="{{item.isSuccess == 2 && item.isOpen == 2}}">
+              <image src="/image/lock.png"></image>
+            </view>
+          </view>
+          <view class="rankState noral finish" wx:if="{{item.isSuccess == 1}}">完成</view>
+          <view class="rankTime noral" wx:if="{{item.successTime !== null}}">
+          {{item.successTime}}</view>
+          <view class="rankTime noral" wx:if="{{item.successTime == null}}">
           </view>
         </view>
-         <view class="rankState noral finish" wx:if="{{item.isSuccess == 1}}">完成</view>
-        <view class="rankTime noral" wx:if="{{item.successTime !== null}}">
-        {{item.successTime}}</view>
-         <view class="rankTime noral" wx:if="{{item.successTime == null}}">
-        </view>
-      </view>
+      </scroll-view>
     </view>
     <view class="centerWrap" wx:if="{{combinationList == null}}">
       <view class="noPlan">该用户暂无训练计划</view>

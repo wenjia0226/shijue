@@ -93,7 +93,6 @@
 }
 .time {
   width: 150rpx;
-  font-size: 20rpx;
 }
 .wayName {
   flex: 1

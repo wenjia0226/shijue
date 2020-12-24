@@ -4,6 +4,7 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
+    this.update();
     let that = this;
     wx.login({
       //获取code
@@ -51,8 +52,8 @@ App({
   globalData: {
     userInfo: null,
     navHeight: '',
-    //URL: 'https://www.guangliangkongjian.com/lightspace/train/'
-    URL: 'http://192.168.100.199:8080/lightspace/train/',
+    URL: 'https://www.guangliangkongjian.com/lightspace/train/'
+    //URL: 'http://192.168.100.199:8080/lightspace/train/',
   },
   wxRequest(url, data, callback, errFun) {
     wx.request({
@@ -72,5 +73,33 @@ App({
         wx.hideLoading()
       }
     })
+  },
+  update: function () {
+    if (wx.canIUse('getUpdateManager')) {
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function (res) {
+        console.log('onCheckForUpdate====', res)
+        // 请求完新版本信息的回调
+        if (res.hasUpdate) {
+          console.log('res.hasUpdate====')
+          updateManager.onUpdateReady(function () {
+            updateManager.applyUpdate() //自动更新
+          })
+          updateManager.onUpdateFailed(function () {
+            // 新的版本下载失败
+            wx.showModal({
+              title: '已经有新版本了哟~',
+              content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'
+            })
+          })
+        }
+      })
+    } else {
+      // can't use getUpdateManager
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
   },
 })
