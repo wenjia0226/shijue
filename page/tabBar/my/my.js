@@ -273,5 +273,23 @@ Page({
         content: '请先授权',
       })
     }
+  },
+  gotoScan() {
+    let that = this;
+    wx.scanCode({  //扫码
+      success(res) {
+        let studentId = res.result;
+        let url = app.globalData.URL + "bindingChildren", data = { openId: wx.getStorageSync('openId'), childrenId: studentId};
+       
+          app.wxRequest(url, data, (res) => { 
+            if(res.data.status == 200) {
+              wx.showModal({
+                content: '同步绑定成功',
+                showCancel: false
+              })
+            }
+          })
+      }
+    })
   }
 })

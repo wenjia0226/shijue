@@ -51,8 +51,8 @@ App({
   globalData: {
     userInfo: null,
     navHeight: '',
-    URL: 'https://www.guangliangkongjian.com/lightspace/train/'
-    // URL: 'http://192.168.100.199:8080/lightspace/train/',
+    //URL: 'https://www.guangliangkongjian.com/lightspace/train/'
+    URL: 'http://192.168.100.199:8080/lightspace/train/',
   },
   wxRequest(url, data, callback, errFun) {
     wx.request({

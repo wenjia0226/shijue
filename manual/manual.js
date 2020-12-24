@@ -61,6 +61,13 @@ Page({
     })
   },
   saveStudent() {
+    if(this.data.name == '') {
+      wx.showModal({
+        content: '请添加姓名',
+        showCancel:false
+      })
+      return;
+    }
     if(!this.data.flag) {
       this.setData({
         flag: true
@@ -75,8 +82,7 @@ Page({
     };
     wx.setStorageSync('studentName', this.data.name);
     wx.setStorageSync('gender', this.data.gender);
-    app.wxRequest(url, data, (res) => {
-      
+    app.wxRequest(url, data, (res) => { 
       wx.setStorageSync('studentId', res.data.data)
       if(res.data.status == 200) {
         if (that.data.prevRoute == 'page/tabBar/index/index') {

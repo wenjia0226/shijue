@@ -52,7 +52,6 @@
         <view class="itemTitle">眼健康档案</view>
       </view>
     </view>
-    
     <view class="titleBox">
       第三方
     </view>
@@ -62,20 +61,27 @@
         <view class="itemTitle">合作端入口</view>
       </view>
     </view>
+    <view class="titleBox">
+      同步绑定
+    </view>
+    <view class="contentBox">
+      <view class="centerItem" bindtap="gotoScan">
+        <image  src="/image/clert.png"></image>
+        <view class="itemTitle">同步绑定</view>
+      </view>
+    </view>
   </view>
 </view>
-
-
-    <view class="greyBg" wx:if="{{reminShow}}"  bindtap="hideRemin"></view>
-    <view class="showRemin"  wx:if="{{reminShow}}">
-        <view class="quxiaoRemin" bindtap="hideRemin">
-          <image src="/image/quxiao3.png" mode="aspectFit"></image>
-        </view>
-        <view class="modeTitleRemin">
-          
-          <input class="inputBox" bindinput="inputN" placeholder="请输入手机号"></input>
-        </view>
-        <view class="chooseBox">
-          <view class="chooseItem" bindtap="save">保存</view>
-        </view>
-      </view>
+<view class="greyBg" wx:if="{{reminShow}}"  bindtap="hideRemin"></view>
+<view class="showRemin"  wx:if="{{reminShow}}">
+    <view class="quxiaoRemin" bindtap="hideRemin">
+      <image src="/image/quxiao3.png" mode="aspectFit"></image>
+    </view>
+    <view class="modeTitleRemin">
+      
+      <input class="inputBox" bindinput="inputN" placeholder="请输入手机号"></input>
+    </view>
+    <view class="chooseBox">
+      <view class="chooseItem" bindtap="save">保存</view>
+    </view>
+    </view>
